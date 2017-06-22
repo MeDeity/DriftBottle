@@ -31,18 +31,21 @@
             android:orientation="horizontal">
 
             <include
+                android:id="@+id/item_bottle_send"
                 layout="@layout/item_icon_send"
                 android:layout_width="60.0dip"
                 android:layout_height="60.0dip"
                 android:layout_weight="1.0" />
 
             <include
+                android:id="@+id/item_bottle_get"
                 layout="@layout/item_icon_get"
                 android:layout_width="60.0dip"
                 android:layout_height="60.0dip"
                 android:layout_weight="1.0" />
 
             <include
+                android:id="@+id/item_bottle_msg"
                 layout="@layout/item_icon_msg"
                 android:layout_width="60.0dip"
                 android:layout_height="60.0dip"
