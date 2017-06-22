@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@mipmap/beach_bg">
+
+        <ImageView
+            android:id="@+id/beach_shui"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="110.0dip"
+            android:contentDescription="@null"
+            android:src="@mipmap/beach_shui" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="80.0dip"
+            android:layout_alignParentBottom="true"
+            android:layout_marginLeft="30.0dip"
+            android:layout_marginRight="30.0dip"
+            android:baselineAligned="false"
+            android:gravity="center_horizontal"
+            android:orientation="horizontal">
+
+            <include
+                layout="@layout/item_icon_send"
+                android:layout_width="60.0dip"
+                android:layout_height="60.0dip"
+                android:layout_weight="1.0" />
+
+            <include
+                layout="@layout/item_icon_get"
+                android:layout_width="60.0dip"
+                android:layout_height="60.0dip"
+                android:layout_weight="1.0" />
+
+            <include
+                layout="@layout/item_icon_msg"
+                android:layout_width="60.0dip"
+                android:layout_height="60.0dip"
+                android:layout_weight="1.0" />
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</LinearLayout>
