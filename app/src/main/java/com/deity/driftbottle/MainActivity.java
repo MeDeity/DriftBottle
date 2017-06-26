@@ -15,6 +15,9 @@ public class MainActivity extends AppCompatActivity {
     @BindView(R.id.beach_shui)
     public ImageView beach_shui;
 
+    @BindView(R.id.beach_lang)
+    public ImageView beach_lang;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -22,6 +25,7 @@ public class MainActivity extends AppCompatActivity {
         ButterKnife.bind(this);
 
         beach_shui.startAnimation(AnimationUtils.loadAnimation(MainActivity.this, R.anim.anim_shake));
+        beach_lang.startAnimation(AnimationUtils.loadAnimation(MainActivity.this, R.anim.anim_shake));
     }
 
     @SuppressWarnings("unused")

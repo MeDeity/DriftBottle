@@ -11,6 +11,16 @@
         android:background="@mipmap/beach_bg">
 
         <ImageView
+            android:id="@+id/beach_lang"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="110.0dip"
+            android:contentDescription="@null"
+            android:src="@mipmap/beach_lang" />
+
+        <ImageView
             android:id="@+id/beach_shui"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
