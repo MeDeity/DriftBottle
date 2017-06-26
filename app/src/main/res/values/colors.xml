@@ -6,4 +6,7 @@
 
 
     <color name="color_gray">#33000000</color>
+    <!-- 描边颜色 -->
+    <color name="border_color">#ccc</color>
+    <color name="text_color">#333</color>
 </resources>

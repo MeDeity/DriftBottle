@@ -1,7 +1,7 @@
 package com.deity.driftbottle;
 
+import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.animation.AnimationUtils;
@@ -18,6 +18,14 @@ public class MainActivity extends AppCompatActivity {
     @BindView(R.id.beach_lang)
     public ImageView beach_lang;
 
+    @BindView(R.id.bottle_getting)
+    public ImageView bottle_getting;
+
+    @BindView(R.id.bottle_sending)
+    public ImageView bottle_sending;
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,14 +39,26 @@ public class MainActivity extends AppCompatActivity {
     @SuppressWarnings("unused")
     @OnClick(R.id.send_nav_image)
     public void sendBottleMsg(View view){
-        new AlertDialog.Builder(MainActivity.this).setView(R.layout.dialog_bottle_send)
-                .show();
+//        new AlertDialog.Builder(MainActivity.this).setView(R.layout.dialog_bottle_send)
+//                .show();
+        bottle_sending.startAnimation(AnimationUtils.loadAnimation(MainActivity.this, R.anim.anim_move_up));
     }
 
     @SuppressWarnings("unused")
     @OnClick(R.id.get_nav_image)
     public void getBottleMsg(View view){
-        new AlertDialog.Builder(MainActivity.this).setView(R.layout.dialog_bottle_receiver)
-                .show();
+//        new AlertDialog.Builder(MainActivity.this).setView(R.layout.dialog_bottle_receiver)
+//                .show();
+        bottle_getting.startAnimation(AnimationUtils.loadAnimation(MainActivity.this, R.anim.anim_move_up));
+    }
+
+    @SuppressWarnings("unused")
+    @OnClick(R.id.item_bottle_msg)
+    public void getBottle(View view){
+        Intent intent = new Intent(MainActivity.this,SettingActivity.class);
+        startActivity(intent);
+
+
+
     }
 }

@@ -11,6 +11,15 @@
         android:background="@mipmap/beach_bg">
 
         <ImageView
+            android:id="@+id/iv_fishing"
+            android:layout_width="100.0dip"
+            android:layout_height="100.0dip"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="160.0dip"
+            android:contentDescription="@null"
+            android:src="@mipmap/beach_fishingrod_move" />
+
+        <ImageView
             android:id="@+id/beach_lang"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -61,6 +70,27 @@
                 android:layout_height="60.0dip"
                 android:layout_weight="1.0" />
         </LinearLayout>
+
+
+        <ImageView
+            android:id="@+id/bottle_sending"
+            android:layout_width="60.0dip"
+            android:layout_height="60.0dip"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="100.0dip"
+            android:contentDescription="@null"
+            android:src="@mipmap/bottle_v" />
+
+        <ImageView
+            android:id="@+id/bottle_getting"
+            android:layout_width="100.0dip"
+            android:layout_height="100.0dip"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="100.0dip"
+            android:contentDescription="@null"
+            android:src="@mipmap/beach_fishingrod"/>
 
     </RelativeLayout>
 

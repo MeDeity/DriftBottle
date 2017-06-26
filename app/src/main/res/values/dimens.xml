@@ -3,4 +3,5 @@
     <dimen name="width_1">1dp</dimen>
     <dimen name="radius_5">5dp</dimen>
     <dimen name="radius_point">40dp</dimen>
+    <dimen name="radius_size">8dp</dimen>
 </resources>
