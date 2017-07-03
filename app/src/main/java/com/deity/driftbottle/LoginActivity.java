@@ -4,10 +4,10 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Toast;
 
+import com.hyphenate.easeui.ui.EaseBaseActivity;
 import com.umeng.socialize.UMAuthListener;
 import com.umeng.socialize.UMShareAPI;
 import com.umeng.socialize.bean.SHARE_MEDIA;
@@ -23,7 +23,7 @@ import butterknife.OnClick;
  * Created by Deity on 2017/6/29.
  */
 
-public class LoaginActivity extends AppCompatActivity {
+public class LoginActivity extends EaseBaseActivity {
 
     private ProgressDialog dialog;
 
@@ -32,7 +32,11 @@ public class LoaginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         ButterKnife.bind(this);
-        handleThirdPartLogin(savedInstanceState);
+        if (HuanXinHelper.getInstance().isLoggedIn()){//自动登录
+            startActivity(new Intent(LoginActivity.this, MainActivity.class));
+            return;
+        }
+//        handleThirdPartLogin(savedInstanceState);
     }
 
     public void handleThirdPartLogin(Bundle savedInstanceState){
@@ -48,7 +52,7 @@ public class LoaginActivity extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), "onRestoreInstanceState Authorize succeed", Toast.LENGTH_SHORT).show();
                 SocializeUtils.safeCloseDialog(dialog);
                 //TODO 获取用户信息
-                UMShareAPI.get(LoaginActivity.this).getPlatformInfo(LoaginActivity.this, SHARE_MEDIA.WEIXIN, authGetInfoListener);
+                UMShareAPI.get(LoginActivity.this).getPlatformInfo(LoginActivity.this, SHARE_MEDIA.WEIXIN, authGetInfoListener);
             }
 
             @Override
@@ -68,11 +72,11 @@ public class LoaginActivity extends AppCompatActivity {
     @SuppressWarnings("unused")
     @OnClick(R.id.btn_wx)
     public void loginWX(View view){
-        boolean isauth = UMShareAPI.get(LoaginActivity.this).isAuthorize(LoaginActivity.this, SHARE_MEDIA.WEIXIN);
+        boolean isauth = UMShareAPI.get(LoginActivity.this).isAuthorize(LoginActivity.this, SHARE_MEDIA.WEIXIN);
         if (isauth) {
-            UMShareAPI.get(LoaginActivity.this).deleteOauth(LoaginActivity.this, SHARE_MEDIA.WEIXIN, authListener);
+            UMShareAPI.get(LoginActivity.this).deleteOauth(LoginActivity.this, SHARE_MEDIA.WEIXIN, authListener);
         } else {
-            UMShareAPI.get(LoaginActivity.this).doOauthVerify(LoaginActivity.this, SHARE_MEDIA.WEIXIN, authListener);
+            UMShareAPI.get(LoginActivity.this).doOauthVerify(LoginActivity.this, SHARE_MEDIA.WEIXIN, authListener);
         }
     }
 
@@ -132,7 +136,7 @@ public class LoaginActivity extends AppCompatActivity {
     };
 
     private void TostMsg(String mesage){
-        Toast.makeText(LoaginActivity.this,mesage,Toast.LENGTH_LONG).show();
+        Toast.makeText(LoginActivity.this,mesage,Toast.LENGTH_LONG).show();
     }
 
     @Override

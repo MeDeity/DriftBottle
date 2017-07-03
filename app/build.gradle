@@ -52,8 +52,7 @@ dependencies {
     compile files('libs/umeng_social_net.jar')
     compile files('libs/umeng_social_tool.jar')
     compile files('libs/wechat-sdk-android-with-mta-1.1.6.jar')
-
-
     //环信
     compile 'com.hyphenate:hyphenate-sdk-lite:3.3.0'
+    compile project(':easeui')
 }

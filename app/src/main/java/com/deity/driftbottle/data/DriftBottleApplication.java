@@ -2,6 +2,8 @@ package com.deity.driftbottle.data;
 
 import android.app.Application;
 
+import com.hyphenate.chat.EMClient;
+import com.hyphenate.chat.EMOptions;
 import com.umeng.socialize.Config;
 import com.umeng.socialize.PlatformConfig;
 import com.umeng.socialize.UMShareAPI;
@@ -21,6 +23,7 @@ public class DriftBottleApplication extends Application {
         Config.DEBUG = true;
         QueuedWork.isUseThreadPool = false;
         UMShareAPI.get(this);
+        initHuanxin();
     }
 
     //TODO MicroMsg.SDK.WXApiImplV10: <init>, appId = null,为null是因为DriftBottleApplication没注册
@@ -28,5 +31,16 @@ public class DriftBottleApplication extends Application {
     {
         PlatformConfig.setWeixin("wxaf363103f6a600fa", "18ca6f0c17b41b8e3b658f8a09c5e6d2");
         PlatformConfig.setQQZone("100424468", "c7394704798a158208a74ab60104f0ba");
+    }
+
+
+    private void initHuanxin(){
+        EMOptions options = new EMOptions();
+        // 默认添加好友时，是不需要验证的，改成需要验证
+        options.setAcceptInvitationAlways(false);
+        //初始化
+        EMClient.getInstance().init(getApplicationContext(), options);
+        //在做打包混淆时，关闭debug模式，避免消耗不必要的资源
+        EMClient.getInstance().setDebugMode(true);
     }
 }
