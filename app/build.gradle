@@ -12,10 +12,25 @@ android {
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
+
+    signingConfigs {
+        releaseConfig {
+            keyAlias 'DeityKey'
+            keyPassword 'fwh525525'
+            storeFile file('./keystore/DeityKey')
+            storePassword 'fwh525525'
+        }
+    }
+
     buildTypes {
         release {
             minifyEnabled false
+            signingConfig signingConfigs.releaseConfig
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+        debug{
+            debuggable false
+            minifyEnabled false
         }
     }
 }
@@ -37,4 +52,8 @@ dependencies {
     compile files('libs/umeng_social_net.jar')
     compile files('libs/umeng_social_tool.jar')
     compile files('libs/wechat-sdk-android-with-mta-1.1.6.jar')
+
+
+    //环信
+    compile 'com.hyphenate:hyphenate-sdk-lite:3.3.0'
 }
