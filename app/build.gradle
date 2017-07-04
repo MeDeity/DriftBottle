@@ -55,4 +55,6 @@ dependencies {
     //环信
     compile 'com.hyphenate:hyphenate-sdk-lite:3.3.0'
     compile project(':easeui')
+    compile 'io.reactivex.rxjava2:rxjava:2.1.1'
+    compile 'io.reactivex:rxandroid:1.2.1'
 }
