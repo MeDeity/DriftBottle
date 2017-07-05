@@ -15,6 +15,7 @@ import io.reactivex.ObservableEmitter;
 import io.reactivex.ObservableOnSubscribe;
 import io.reactivex.annotations.NonNull;
 import io.reactivex.functions.Consumer;
+import io.reactivex.schedulers.Schedulers;
 
 /**
  * 注册页面
@@ -23,10 +24,10 @@ import io.reactivex.functions.Consumer;
 
 public class RegisterActivity extends EaseBaseActivity {
     @BindView(R.id.username)
-    private EditText username;
+    public EditText username;
 
     @BindView(R.id.password)
-    private EditText password;
+    public EditText password;
 
 
     @Override
@@ -41,7 +42,7 @@ public class RegisterActivity extends EaseBaseActivity {
     public void onRegisterEvent(View view){
         final String userName = username.getText().toString();
         final String passwordStr = password.getText().toString();
-        Observable.create(new ObservableOnSubscribe<String[]>() {
+        Observable<String[]> observable = Observable.create(new ObservableOnSubscribe<String[]>() {
             @Override
             public void subscribe(@NonNull ObservableEmitter<String[]> e) throws Exception {
                 e.onNext(new String[]{userName,passwordStr});
@@ -53,5 +54,6 @@ public class RegisterActivity extends EaseBaseActivity {
                 EMClient.getInstance().createAccount(strings[0],strings[1]);
             }
         };
+        observable.subscribeOn(Schedulers.io()).subscribe(consumer);
     }
 }

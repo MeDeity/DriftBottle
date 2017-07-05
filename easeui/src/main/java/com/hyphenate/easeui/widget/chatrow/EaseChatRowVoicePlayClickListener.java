@@ -13,16 +13,6 @@
  */
 package com.hyphenate.easeui.widget.chatrow;
 
-import java.io.File;
-
-import com.hyphenate.chat.EMClient;
-import com.hyphenate.chat.EMMessage;
-import com.hyphenate.chat.EMMessage.ChatType;
-import com.hyphenate.chat.EMVoiceMessageBody;
-import com.hyphenate.easeui.R;
-import com.hyphenate.easeui.EaseUI;
-import com.hyphenate.util.EMLog;
-
 import android.app.Activity;
 import android.content.Context;
 import android.graphics.drawable.AnimationDrawable;
@@ -33,6 +23,16 @@ import android.view.View;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.Toast;
+
+import com.hyphenate.chat.EMClient;
+import com.hyphenate.chat.EMMessage;
+import com.hyphenate.chat.EMMessage.ChatType;
+import com.hyphenate.chat.EMVoiceMessageBody;
+import com.hyphenate.easeui.EaseUI;
+import com.hyphenate.easeui.R;
+import com.hyphenate.util.EMLog;
+
+import java.io.File;
 
 /**
  * 语音row播放点击事件监听
@@ -142,11 +142,11 @@ public class EaseChatRowVoicePlayClickListener implements View.OnClickListener {
 	// show the voice playing animation
 	private void showAnimation() {
 		// play voice, and start animation
-		if (message.direct() == EMMessage.Direct.RECEIVE) {
-			voiceIconView.setImageResource(R.anim.voice_from_icon);
-		} else {
-			voiceIconView.setImageResource(R.anim.voice_to_icon);
-		}
+//		if (message.direct() == EMMessage.Direct.RECEIVE) {
+//			voiceIconView.setImageResource(R.anim.voice_from_icon);
+//		} else {
+//			voiceIconView.setImageResource(R.anim.voice_to_icon);
+//		}
 		voiceAnimation = (AnimationDrawable) voiceIconView.getDrawable();
 		voiceAnimation.start();
 	}

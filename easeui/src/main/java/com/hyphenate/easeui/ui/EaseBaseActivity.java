@@ -23,8 +23,6 @@ import android.view.View;
 import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 
-import com.hyphenate.easeui.EaseUI;
-
 @SuppressLint({"NewApi", "Registered"})
 public class EaseBaseActivity extends FragmentActivity {
 
@@ -51,7 +49,7 @@ public class EaseBaseActivity extends FragmentActivity {
     protected void onResume() {
         super.onResume();
         // cancel the notification
-        EaseUI.getInstance().getNotifier().reset();
+//        EaseUI.getInstance().getNotifier().reset();
     }
     
     protected void hideSoftKeyboard() {
