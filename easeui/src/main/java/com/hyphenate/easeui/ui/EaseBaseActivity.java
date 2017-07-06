@@ -25,7 +25,7 @@ import android.view.inputmethod.InputMethodManager;
 
 @SuppressLint({"NewApi", "Registered"})
 public class EaseBaseActivity extends FragmentActivity {
-
+    public static final String TAG = EaseBaseActivity.class.getSimpleName();
     protected InputMethodManager inputMethodManager;
 
     @Override

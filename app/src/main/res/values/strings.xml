@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">DriftBottle</string>
+    <string name="delete_contact">Delete contact</string>
 </resources>

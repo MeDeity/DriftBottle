@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import com.hyphenate.easeui.ui.EaseBaseActivity;
-import com.hyphenate.easeui.ui.EaseChatFragment;
 import com.hyphenate.util.EasyUtils;
 
 import butterknife.ButterKnife;
@@ -14,17 +13,17 @@ import butterknife.ButterKnife;
  * Created by Deity on 2017/7/4.
  */
 
-public class ChatActivity extends EaseBaseActivity {
+public class ConversationListActivity extends EaseBaseActivity {
 
-    private EaseChatFragment chatFragment;
+    private ConversationListFragment conversationListFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chat);
         ButterKnife.bind(this);
-        chatFragment = new ChatFragment();
-        getSupportFragmentManager().beginTransaction().add(R.id.fragment_chat,chatFragment).commit();
+        conversationListFragment = new ConversationListFragment();
+        getSupportFragmentManager().beginTransaction().add(R.id.fragment_chat,conversationListFragment).commit();
     }
 
     //当页面在栈顶时，仍接收到Intent，会执行该方法
@@ -44,7 +43,6 @@ public class ChatActivity extends EaseBaseActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        chatFragment.onBackPressed();
         if (EasyUtils.isSingleActivity(this)) {
             Intent intent = new Intent(this, MainActivity.class);
             startActivity(intent);

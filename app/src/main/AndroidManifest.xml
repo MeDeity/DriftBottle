@@ -59,6 +59,13 @@
         <activity android:name="com.deity.driftbottle.LoginActivity">
 
         </activity>
+        <activity android:name="com.deity.driftbottle.ConversationListActivity">
+
+        </activity>
+
+        <activity android:name="com.deity.driftbottle.ChatActivity">
+
+        </activity>
         <activity android:name=".SettingActivity"
             android:theme="@style/AppTheme"/>
 

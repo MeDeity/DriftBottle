@@ -121,9 +121,13 @@ public class EaseChatFragment extends EaseBaseFragment implements EMMessageListe
 
         fragmentArgs = getArguments();
         // check if single chat or group chat
-        chatType = fragmentArgs.getInt(EaseConstant.EXTRA_CHAT_TYPE, EaseConstant.CHATTYPE_SINGLE);
+//        chatType = fragmentArgs.getInt(EaseConstant.EXTRA_CHAT_TYPE, EaseConstant.CHATTYPE_SINGLE);
         // userId you are chat with or group id
-        toChatUsername = fragmentArgs.getString(EaseConstant.EXTRA_USER_ID);
+//        toChatUsername = fragmentArgs.getString(EaseConstant.EXTRA_USER_ID);
+
+        chatType = EaseConstant.CHATTYPE_SINGLE;
+        toChatUsername = "大神Deity";
+
 
         super.onActivityCreated(savedInstanceState);
     }
@@ -236,10 +240,10 @@ public class EaseChatFragment extends EaseBaseFragment implements EMMessageListe
         setRefreshLayoutListener();
         
         // show forward message if the message is not null
-        String forward_msg_id = getArguments().getString("forward_msg_id");
-        if (forward_msg_id != null) {
-            forwardMessage(forward_msg_id);
-        }
+//        String forward_msg_id = getArguments().getString("forward_msg_id");
+//        if (forward_msg_id != null) {
+//            forwardMessage(forward_msg_id);
+//        }
     }
     
     /**
