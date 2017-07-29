@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/ll_chat"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include layout="@layout/include_navi" />
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1.0">
+
+        <android.support.v4.widget.SwipeRefreshLayout
+            android:id="@+id/sw_refresh"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rc_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+        </android.support.v4.widget.SwipeRefreshLayout>
+
+        <RelativeLayout
+            android:id="@+id/layout_record"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_gravity="center"
+            android:padding="10dp"
+            android:visibility="invisible">
+
+            <ImageView
+                android:id="@+id/iv_record"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_centerHorizontal="true"
+                android:src="录音" />
+
+            <TextView
+                android:id="@+id/tv_voice_tips"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/iv_record"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="10dp"
+                android:text="语音提示"
+                android:textSize="14sp" />
+        </RelativeLayout>
+    </FrameLayout>
+
+    <include layout="@layout/include_chat_bottom_bar" />
+</LinearLayout>
