@@ -23,7 +23,6 @@ public class ConversationListActivity extends EaseBaseActivity {
         setContentView(R.layout.activity_chat);
         ButterKnife.bind(this);
         conversationListFragment = new ConversationListFragment();
-        getSupportFragmentManager().beginTransaction().add(R.id.fragment_chat,conversationListFragment).commit();
     }
 
     //当页面在栈顶时，仍接收到Intent，会执行该方法

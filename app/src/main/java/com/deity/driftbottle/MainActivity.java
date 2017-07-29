@@ -94,7 +94,7 @@ public class MainActivity extends AppCompatActivity {
     @SuppressWarnings("unused")
     @OnClick(R.id.item_bottle_msg)
     public void getBottle(View view){
-        Intent intent = new Intent(MainActivity.this,SettingActivity.class);
+        Intent intent = new Intent(MainActivity.this,ConversationActivity.class);
         startActivity(intent);
     }
 
