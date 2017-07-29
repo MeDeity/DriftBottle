@@ -6,6 +6,8 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.deity.driftbottle.bmob.model.BaseModel;
+import com.deity.driftbottle.bmob.model.UserModel;
 import com.hyphenate.chat.EMClient;
 import com.hyphenate.easeui.ui.EaseBaseActivity;
 import com.hyphenate.exceptions.HyphenateException;
@@ -13,6 +15,8 @@ import com.hyphenate.exceptions.HyphenateException;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import cn.bmob.v3.exception.BmobException;
+import cn.bmob.v3.listener.LogInListener;
 import io.reactivex.Observable;
 import io.reactivex.ObservableEmitter;
 import io.reactivex.ObservableOnSubscribe;
@@ -45,32 +49,19 @@ public class RegisterActivity extends EaseBaseActivity {
     public void onRegisterEvent(View view){
         final String userName = username.getText().toString();
         final String passwordStr = password.getText().toString();
-        Observable<String[]> observable = Observable.create(new ObservableOnSubscribe<String[]>() {
+        UserModel.getInstance().register(userName,passwordStr,passwordStr,new LogInListener() {
             @Override
-            public void subscribe(@NonNull ObservableEmitter<String[]> e){
-                e.onNext(new String[]{userName,passwordStr});
-            }
-        });
-        Consumer<String[]> consumer = new Consumer<String[]>() {
-            @Override
-            public void accept(@NonNull String[] strings) {
-                try {
-                    EMClient.getInstance().createAccount(strings[0],strings[1]);
-                    Intent intent = new Intent(RegisterActivity.this,LoginActivity.class);
-                    startActivity(intent);
-                } catch (HyphenateException e) {
-                    startActivity(new Intent(RegisterActivity.this,ConversationListActivity.class));
-                    final String errorMessage = e.getMessage();
-                    runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-                            Toast.makeText(RegisterActivity.this,errorMessage,Toast.LENGTH_LONG).show();
-                        }
-                    });
+            public void done(Object o, BmobException e) {
+                if(e==null){
+                    startActivity(new Intent(RegisterActivity.this,MainActivity.class));
+                }else{
+                    if(e.getErrorCode()== BaseModel.CODE_NOT_EQUAL){
+
+                    }
+                    Toast.makeText(RegisterActivity.this,e.getMessage()+"("+e.getErrorCode()+")",Toast.LENGTH_SHORT).show();
                 }
             }
-        };
-        observable.subscribeOn(Schedulers.io()).subscribe(consumer);
+        });
     }
 
     @SuppressWarnings("unused")

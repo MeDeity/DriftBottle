@@ -23,8 +23,8 @@
         android:text="登录"/>
 
     <Button
-        android:id="@+id/btn_wx"
+        android:id="@+id/btn_register"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="微信登录"/>
+        android:text="立即注册"/>
 </LinearLayout>
