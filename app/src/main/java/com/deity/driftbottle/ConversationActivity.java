@@ -51,7 +51,7 @@ public class ConversationActivity extends AppCompatActivity {
         bmobQuery.findObjects(ConversationActivity.this, new FindListener<DriftBottle>() {
             @Override
             public void onSuccess(List<DriftBottle> list) {
-                Toast.makeText(ConversationActivity.this,"瓶子查询成功"+list.toArray(),Toast.LENGTH_SHORT).show();
+                Toast.makeText(ConversationActivity.this,"瓶子查询成功"+list.size(),Toast.LENGTH_SHORT).show();
                 try {
                     DriftBottle x = list.get(0);
                     BmobIMUserInfo info = new BmobIMUserInfo(x.getChatFromUser().getUserId(),x.getChatFromUser().getName(),x.getChatFromUser().getAvatar());
