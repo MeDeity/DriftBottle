@@ -1,6 +1,5 @@
 package com.deity.driftbottle;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
@@ -224,22 +223,6 @@ public class ChatActivity extends AppCompatActivity implements ObseverListener,M
         else
             return null;
     }
-
-
-    //当页面在栈顶时，仍接收到Intent，会执行该方法
-    @Override
-    protected void onNewIntent(Intent intent) {
-//        String username = intent.getStringExtra("userId");
-//        if (toChatUsername.equals(username))
-//            super.onNewIntent(intent);
-//        else {
-//            finish();
-//            startActivity(intent);
-//        }
-
-        super.onNewIntent(intent);
-    }
-
 
     @Override
     public void onMessageReceive(List<MessageEvent> list) {
