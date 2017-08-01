@@ -25,6 +25,7 @@ import java.util.Map;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import cn.bmob.newim.BmobIM;
 import cn.bmob.newim.bean.BmobIMConversation;
 import cn.bmob.newim.bean.BmobIMMessage;
 import cn.bmob.newim.bean.BmobIMTextMessage;
@@ -34,6 +35,7 @@ import cn.bmob.newim.listener.MessageListHandler;
 import cn.bmob.newim.listener.MessageSendListener;
 import cn.bmob.newim.listener.MessagesQueryListener;
 import cn.bmob.newim.listener.ObseverListener;
+import cn.bmob.newim.notification.BmobNotificationManager;
 import cn.bmob.v3.exception.BmobException;
 
 /**
@@ -109,6 +111,32 @@ public class ChatActivity extends AppCompatActivity implements ObseverListener,M
                 return true;
             }
         });
+    }
+
+    /**
+     * 添加未读的通知栏消息到聊天界面
+     */
+    private void addUnReadMessage(){
+        List<MessageEvent> cache = BmobNotificationManager.getInstance(this).getNotificationCacheList();
+        if(cache.size()>0){
+            int size =cache.size();
+            for(int i=0;i<size;i++){
+                MessageEvent event = cache.get(i);
+                addMessage2Chat(event);
+            }
+        }
+        scrollToBottom();
+    }
+
+    @Override
+    protected void onResume() {
+        //锁屏期间的收到的未读消息需要添加到聊天界面中
+        addUnReadMessage();
+        //添加页面消息监听器
+        BmobIM.getInstance().addMessageListHandler(this);
+        // 有可能锁屏期间，在聊天界面出现通知栏，这时候需要清除通知
+        BmobNotificationManager.getInstance(this).cancelNotification();
+        super.onResume();
     }
 
     /**首次加载，可设置msg为null，下拉刷新的时候，默认取消息表的第一个msg作为刷新的起始时间点，默认按照消息时间的降序排列
