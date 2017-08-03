@@ -7,6 +7,7 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.deity.driftbottle.R;
 import com.deity.driftbottle.adapter.base.BaseViewHolder;
 
@@ -32,9 +33,11 @@ public class ReceiveImageHolder extends BaseViewHolder {
   protected ImageView iv_picture;
   @BindView(R.id.progress_load)
   protected ProgressBar progress_load;
+  private Context context;
 
   public ReceiveImageHolder(Context context, ViewGroup root, OnRecyclerViewListener onRecyclerViewListener) {
     super(context, root, R.layout.item_chat_received_image,onRecyclerViewListener);
+    this.context = context;
   }
 
   @Override
@@ -49,28 +52,7 @@ public class ReceiveImageHolder extends BaseViewHolder {
     //可使用buildFromDB方法转化为指定类型的消息
     final BmobIMImageMessage message = BmobIMImageMessage.buildFromDB(false,msg);
     //显示图片
-//    ImageLoaderFactory.getLoader().load(iv_picture,message.getRemoteUrl(),  R.mipmap.ic_launcher,new ImageLoadingListener(){;
-//
-//    @Override
-//      public void onLoadingStarted(String s, View view) {
-//        progress_load.setVisibility(View.VISIBLE);
-//      }
-//
-//      @Override
-//      public void onLoadingComplete(String s, View view, Bitmap bitmap) {
-//        progress_load.setVisibility(View.INVISIBLE);
-//      }
-//
-//      @Override
-//      public void onLoadingCancelled(String s, View view) {
-//        progress_load.setVisibility(View.INVISIBLE);
-//      }
-//
-//      @Override
-//      public void onLoadingFailed(String s, View view, FailReason failReason) {
-//        progress_load.setVisibility(View.INVISIBLE);
-//      }
-//    });
+    Glide.with(context).load(info.getAvatar()).error(R.mipmap.head).into(iv_avatar);
 
     iv_avatar.setOnClickListener(new View.OnClickListener() {
       @Override

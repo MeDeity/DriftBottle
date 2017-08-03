@@ -128,7 +128,8 @@
         </receiver>
 
 
-        <activity android:name="com.deity.driftbottle.ConversationActivity">
+        <activity android:name="com.deity.driftbottle.ConversationActivity"
+            android:theme="@style/AppTheme">
 
         </activity>
 

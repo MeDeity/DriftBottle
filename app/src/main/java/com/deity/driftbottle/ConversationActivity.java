@@ -4,14 +4,26 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.widget.Toast;
 
+import com.deity.driftbottle.adapter.ConversationAdapter;
+import com.deity.driftbottle.adapter.IMutlipleItem;
+import com.deity.driftbottle.adapter.OnRecyclerViewListener;
+import com.deity.driftbottle.bmob.bean.Conversation;
 import com.deity.driftbottle.bmob.bean.DriftBottle;
+import com.deity.driftbottle.bmob.bean.PrivateConversation;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import cn.bmob.newim.BmobIM;
 import cn.bmob.newim.bean.BmobIMConversation;
 import cn.bmob.newim.bean.BmobIMUserInfo;
@@ -25,12 +37,111 @@ import cn.bmob.v3.listener.SaveListener;
  */
 
 public class ConversationActivity extends AppCompatActivity {
+    @BindView(R.id.rc_view)
+    RecyclerView rc_view;
+    @BindView(R.id.sw_refresh)
+    SwipeRefreshLayout sw_refresh;
+    ConversationAdapter adapter;
+    LinearLayoutManager layoutManager;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        testData();
-        testQuery();
+        setContentView(R.layout.activity_conversation);
+        ButterKnife.bind(this);
+        initViews();
+//        testData();
+//        testQuery();
+    }
+
+    public void initViews(){
+        //单一布局
+        IMutlipleItem<Conversation> mutlipleItem = new IMutlipleItem<Conversation>() {
+
+            @Override
+            public int getItemViewType(int postion, Conversation c) {
+                return 0;
+            }
+
+            @Override
+            public int getItemLayoutId(int viewtype) {
+                return R.layout.item_conversation;
+            }
+
+            @Override
+            public int getItemCount(List<Conversation> list) {
+                return list.size();
+            }
+        };
+        adapter = new ConversationAdapter(ConversationActivity.this,mutlipleItem,null);
+        rc_view.setAdapter(adapter);
+        layoutManager = new LinearLayoutManager(ConversationActivity.this);
+        rc_view.setLayoutManager(layoutManager);
+        sw_refresh.setEnabled(true);
+        setListener();
+    }
+
+
+    /**
+     * 获取会话列表的数据：增加新朋友会话
+     * @return
+     */
+    private List<Conversation> getConversations(){
+        //添加会话
+        List<Conversation> conversationList = new ArrayList<>();
+        conversationList.clear();
+        List<BmobIMConversation> list =BmobIM.getInstance().loadAllConversation();
+        if(list!=null && list.size()>0){
+            for (BmobIMConversation item:list){
+                switch (item.getConversationType()){
+                    case 1://私聊
+                        conversationList.add(new PrivateConversation(item));
+                        break;
+                    default:
+                        break;
+                }
+            }
+        }
+//        //添加新朋友会话-获取好友请求表中最新一条记录
+//        List<NewFriend> friends = NewFriendManager.getInstance(getActivity()).getAllNewFriend();
+//        if(friends!=null && friends.size()>0){
+//            conversationList.add(new NewFriendConversation(friends.get(0)));
+//        }
+        //重新排序
+        Collections.sort(conversationList);
+        return conversationList;
+    }
+
+    /**
+     查询本地会话
+     */
+    public void query(){
+//        adapter.bindDatas(BmobIM.getInstance().loadAllConversation());
+        adapter.bindDatas(getConversations());
+        adapter.notifyDataSetChanged();
+        sw_refresh.setRefreshing(false);
+    }
+
+    private void setListener(){
+        sw_refresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                query();
+            }
+        });
+        adapter.setOnRecyclerViewListener(new OnRecyclerViewListener() {
+            @Override
+            public void onItemClick(int position) {
+                adapter.getItem(position).onClick(ConversationActivity.this);
+            }
+
+            @Override
+            public boolean onItemLongClick(int position) {
+                adapter.getItem(position).onLongClick(ConversationActivity.this);
+                adapter.remove(position);
+                return true;
+            }
+        });
     }
 
     /**启动指定Activity

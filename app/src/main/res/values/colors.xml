@@ -9,4 +9,12 @@
     <!-- 描边颜色 -->
     <color name="border_color">#ccc</color>
     <color name="text_color">#333</color>
+
+    <color name="base_color_text_black">#3e3e39</color>
+
+    <color name="color_99">#999999</color>
+
+    <color name="base_color_text_white">#ffffff</color>
+
+    <color name="color_line">#dadada</color>
 </resources>

@@ -6,6 +6,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.deity.driftbottle.R;
 import com.deity.driftbottle.adapter.base.BaseViewHolder;
 
@@ -46,7 +47,7 @@ public class ReceiveVideoHolder extends BaseViewHolder {
     String time = dateFormat.format(message.getCreateTime());
     tv_time.setText(time);
     final BmobIMUserInfo info = message.getBmobIMUserInfo();
-//    ImageLoaderFactory.getLoader().loadAvator(iv_avatar,info != null ? info.getAvatar() : null, R.mipmap.head);
+    Glide.with(context).load(info.getAvatar()).error(R.mipmap.head).into(iv_avatar);
     String content =  message.getContent();
     tv_message.setText("接收到的视频文件："+content);
     iv_avatar.setOnClickListener(new View.OnClickListener() {

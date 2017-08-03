@@ -7,6 +7,7 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.deity.driftbottle.R;
 import com.deity.driftbottle.adapter.base.BaseViewHolder;
 
@@ -54,7 +55,8 @@ public class SendTextHolder extends BaseViewHolder implements View.OnClickListen
     final BmobIMMessage message = (BmobIMMessage)o;
     SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
     final BmobIMUserInfo info = message.getBmobIMUserInfo();
-//    ImageLoaderFactory.getLoader().loadAvator(iv_avatar,info != null ? info.getAvatar() : null, R.mipmap.head);
+//    Glide.with(context).load(info.getAvatar()).error(R.mipmap.head).into(iv_avatar);
+    Glide.with(context).load(R.mipmap.head).error(R.mipmap.head).into(iv_avatar);
     String time = dateFormat.format(message.getCreateTime());
     String content = message.getContent();
     tv_message.setText(content);
