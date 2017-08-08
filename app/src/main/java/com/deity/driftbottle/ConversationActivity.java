@@ -50,6 +50,7 @@ public class ConversationActivity extends AppCompatActivity {
         setContentView(R.layout.activity_conversation);
         ButterKnife.bind(this);
         initViews();
+        query();
 //        testData();
 //        testQuery();
     }

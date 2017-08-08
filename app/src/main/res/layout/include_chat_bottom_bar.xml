@@ -16,6 +16,7 @@
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:gravity="center"
+            android:background="@drawable/btn_chat_add_selector"
             android:onClick="toAction" />
 
         <Button
@@ -35,6 +36,10 @@
             android:layout_weight="1.0"
             android:gravity="left|center"
             android:hint="请输入新消息"
+            android:minHeight="@dimen/height_40"
+            android:background="@drawable/drawable_edit_normal"
+            android:padding="@dimen/margin_5"
+            android:lineSpacingExtra="@dimen/margin_3"
             android:imeOptions="flagNoExtractUi" />
 
         <Button
@@ -52,6 +57,7 @@
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_marginLeft="6dp"
+            android:background="@drawable/btn_chat_voice_selector"
             android:visibility="gone"
             android:gravity="center"/>
 
@@ -60,6 +66,7 @@
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:gravity="center"
+            android:background="@drawable/btn_chat_keyboard_selector"
             android:visibility="gone"/>
 
         <Button
@@ -67,7 +74,7 @@
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:gravity="center"
-            android:text="发送" />
+            android:background="@drawable/btn_chat_send_selector"/>
     </LinearLayout>
 
     <View
