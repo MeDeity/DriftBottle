@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">漂流之恋</string>
     <string name="delete_contact">Delete contact</string>
+    <string name="picture">照片</string>
+    <string name="camera">拍照</string>
+    <string name="location">位置</string>
 </resources>

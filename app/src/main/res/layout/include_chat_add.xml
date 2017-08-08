@@ -13,6 +13,7 @@
         android:layout_height="wrap_content"
         android:layout_weight="1.0"
         android:drawablePadding="10dp"
+        android:drawableTop="@drawable/btn_chat_add_picture_selector"
         android:gravity="center"
         android:text="@string/picture" />
 
@@ -21,9 +22,10 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1.0"
+        android:drawableTop="@drawable/btn_chat_add_camera_selector"
         android:drawablePadding="10dp"
         android:gravity="center"
-        android:text="@string/picture"/>
+        android:text="@string/camera"/>
 
     <TextView
         android:id="@+id/tv_location"
@@ -31,7 +33,8 @@
         android:layout_height="wrap_content"
         android:layout_weight="1.0"
         android:drawablePadding="10dp"
+        android:drawableTop="@drawable/btn_chat_add_location_selector"
         android:gravity="center"
-        android:text="@string/picture"/>
+        android:text="@string/location"/>
 
 </LinearLayout>
