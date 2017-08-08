@@ -4,4 +4,10 @@
     <string name="picture">照片</string>
     <string name="camera">拍照</string>
     <string name="location">位置</string>
+
+    <string name="login_username_hint">请输入手机号码</string>
+    <string name="login_password_hint">请输入密码&#8230;</string>
+
+    <string name="register_txt1">还没有账号？</string>
+    <string name="register_txt2">立即注册 ></string>
 </resources>

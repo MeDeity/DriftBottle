@@ -17,4 +17,7 @@
     <color name="base_color_text_white">#ffffff</color>
 
     <color name="color_line">#dadada</color>
+    <color name="transparent">#00000000</color>
+    <color name="base_color_text_gray">#9fa0a0</color>
+    <color name="color_theme">#489cfa</color>
 </resources>

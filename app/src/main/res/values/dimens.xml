@@ -4,6 +4,7 @@
     <dimen name="radius_5">5dp</dimen>
     <dimen name="radius_point">40dp</dimen>
     <dimen name="radius_size">8dp</dimen>
+    <dimen name="height_title">48.0dip</dimen>
 
 
     <dimen name="margin_3">3dp</dimen>
